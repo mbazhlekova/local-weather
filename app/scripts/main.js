@@ -26,11 +26,8 @@ function getWeather() {
       city = location.city;
       stateCode = location.region;
       country = location.country;
-      if (stateCode != null) {
-        dispLocation.innerHTML = city + "," + stateCode + "<br/>" + country;
-      } else {
-        dispLocation.innerHTML = city + "<br/>" + country;
-      }
+      dispLocation.innerHTML = city + "<br/>" + country;
+
 
       //Request to OpenWeather API to get data
       requestWeather = new XMLHttpRequest();
@@ -59,6 +56,7 @@ function getWeather() {
           dispWeather.innerHTML = weather;
           dispTemp.innerHTML = Math.round(tempCels) + "&#176";
 
+          //Convert between Fahernheir and Celsius on click of button
           changeWeather.onclick = function (e) {
             if (dispTemp.className === "temp-c") {
               changeWeather.innerHTML = "&deg;C";
@@ -79,6 +77,10 @@ function getWeather() {
   }
   request.send();
 }
+/*
+Following functions set the animated icon
+based on the weather code received from the OpenWeather API
+*/
 
 function setCloudIcon() {
   var element = document.getElementById("weather-icon");
