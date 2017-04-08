@@ -1,7 +1,12 @@
-html { box-sizing: border-box; }
+html {
+  box-sizing: border-box;
+}
+
 html *,
 html *:before,
-html *:after { box-sizing: inherit; }
+html *:after {
+  box-sizing: inherit;
+}
 
 body {
   max-width: 42em;
@@ -20,14 +25,33 @@ h1 {
   font-size: 2em;
   text-transform: uppercase;
 }
+
 h2 {
   color: #fff;
   text-transform: uppercase;
 }
-h3 {
-   color: #fff;
-   text-transform: uppercase;
 
+h3 {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.buttons {
+  background-color: #fff;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.buttons:hover {
+  background-color: lightgray;
+  color: white;
 }
 
 .icon {
@@ -35,7 +59,8 @@ h3 {
   display: inline-block;
   width: 12em;
   height: 10em;
-  font-size: 1em; /* control icon size here */
+  font-size: 1em;
+  /* control icon size here */
 }
 
 .cloud {
@@ -48,13 +73,9 @@ h3 {
   margin: -1.84375em;
   background: currentColor;
   border-radius: 50%;
-  box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em,
-    2.0625em 0.9375em 0 -0.9375em,
-    0 0 0 0.375em #fff,
-    -2.1875em 0.6875em 0 -0.3125em #fff,
-    2.0625em 0.9375em 0 -0.5625em #fff;
+  box-shadow: -2.1875em 0.6875em 0 -0.6875em, 2.0625em 0.9375em 0 -0.9375em, 0 0 0 0.375em #fff, -2.1875em 0.6875em 0 -0.3125em #fff, 2.0625em 0.9375em 0 -0.5625em #fff;
 }
+
 .cloud:after {
   content: '';
   position: absolute;
@@ -66,20 +87,19 @@ h3 {
   background: currentColor;
   box-shadow: 0 0.4375em 0 -0.0625em #fff;
 }
+
 .cloud:nth-child(2) {
   z-index: 0;
   background: #fff;
-  box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em #fff,
-    2.0625em 0.9375em 0 -0.9375em #fff,
-    0 0 0 0.375em #fff,
-    -2.1875em 0.6875em 0 -0.3125em #fff,
-    2.0625em 0.9375em 0 -0.5625em #fff;
+  box-shadow: -2.1875em 0.6875em 0 -0.6875em #fff, 2.0625em 0.9375em 0 -0.9375em #fff, 0 0 0 0.375em #fff, -2.1875em 0.6875em 0 -0.3125em #fff, 2.0625em 0.9375em 0 -0.5625em #fff;
   opacity: 0.3;
   transform: scale(0.5) translate(6em, -3em);
   animation: cloud 4s linear infinite;
 }
-.cloud:nth-child(2):after { background: #fff; }
+
+.cloud:nth-child(2):after {
+  background: #fff;
+}
 
 .sun {
   position: absolute;
@@ -106,6 +126,7 @@ h3 {
   border-radius: 0.25em;
   box-shadow: 0 5.375em #fff;
 }
+
 .rays:before,
 .rays:after {
   content: '';
@@ -121,10 +142,12 @@ h3 {
   border-radius: 0.25em;
   box-shadow: 0 5.375em #fff;
 }
+
 .rays:before {
   transform: rotate(120deg);
 }
-.cloud + .sun {
+
+.cloud+.sun {
   margin: -2em 1em;
 }
 
@@ -152,10 +175,7 @@ h3 {
   margin: -1em 0 0 -0.25em;
   background: #0cf;
   border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
-  box-shadow:
-    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-    -1.375em -0.125em 0 rgba(255,255,255,0.2);
+  box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
   transform: rotate(-28deg);
   animation: rain 3s linear infinite;
 }
@@ -169,6 +189,7 @@ h3 {
   opacity: 0.3;
   animation: lightning 2s linear infinite;
 }
+
 .bolt:nth-child(2) {
   width: 0.5em;
   height: 0.25em;
@@ -177,6 +198,7 @@ h3 {
   opacity: 0.2;
   animation: lightning 1.5s linear infinite;
 }
+
 .bolt:before,
 .bolt:after {
   content: '';
@@ -191,6 +213,7 @@ h3 {
   border-left: 0.5em solid transparent;
   transform: skewX(-10deg);
 }
+
 .bolt:after {
   margin: -0.25em 0 0 -0.25em;
   border-top: 0.75em solid;
@@ -199,6 +222,7 @@ h3 {
   border-left: 0.75em solid;
   transform: skewX(-10deg);
 }
+
 .bolt:nth-child(2):before {
   margin: -0.75em 0 0 -0.5em;
   border-top: 0.625em solid transparent;
@@ -206,6 +230,7 @@ h3 {
   border-bottom: 0.375em solid;
   border-left: 0.25em solid transparent;
 }
+
 .bolt:nth-child(2):after {
   margin: -0.125em 0 0 -0.125em;
   border-top: 0.375em solid;
@@ -226,18 +251,21 @@ h3 {
   opacity: 0.2;
   animation: spin 8s linear infinite reverse;
 }
+
 .flake:after {
   margin: 0.125em 0 0 -1em;
   font-size: 1.5em;
   opacity: 0.4;
   animation: spin 14s linear infinite;
 }
+
 .flake:nth-child(2):before {
   margin: -0.5em 0 0 0.25em;
   font-size: 1.25em;
   opacity: 0.2;
   animation: spin 10s linear infinite;
 }
+
 .flake:nth-child(2):after {
   margin: 0.375em 0 0 0.125em;
   font-size: 2em;
@@ -246,15 +274,21 @@ h3 {
 }
 
 
-/* Animations */ 
+/* Animations */
 
 @keyframes spin {
-  100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes cloud {
-  0% { opacity: 0; }
-  50% { opacity: 0.3; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
   100% {
     opacity: 0;
     transform: scale(0.5) translate(-200%, -3em);
@@ -264,29 +298,17 @@ h3 {
 @keyframes rain {
   0% {
     background: #0cf;
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 #0cf;
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf;
   }
   25% {
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em #0cf,
-      -1.375em -0.125em 0 rgba(255,255,255,0.2);
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em #0cf, -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
   }
   50% {
-    background: rgba(255,255,255,0.3);
-    box-shadow:
-      0.625em 0.875em 0 -0.125em #0cf,
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0.625em 0.875em 0 -0.125em #0cf, -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
   }
   100% {
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 #0cf;
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf;
   }
 }
 

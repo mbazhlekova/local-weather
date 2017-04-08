@@ -8,7 +8,9 @@ function getWeather() {
     requestWeather,
     weather,
     temp,
+    tempCels,
     weatherIDCode,
+    changeWeather = document.getElementById("change-weather"),
     dispWeather = document.getElementById("weather"),
     dispTemp = document.getElementById("temp"),
     dispLocation = document.getElementById("location");
@@ -33,12 +35,13 @@ function getWeather() {
       //Request to OpenWeather API to get data
       requestWeather = new XMLHttpRequest();
       requestWeather.open("GET", "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +
-        "&lon=" + longitude + "&units=imperial" + "&appid=9b37eb46932ca27fa0c98ed1aec271b9", true);
+        "&lon=" + longitude + "&appid=9b37eb46932ca27fa0c98ed1aec271b9", true);
       requestWeather.onload = function () {
         if (requestWeather.status >= 200 && requestWeather.status < 400) {
           var response = JSON.parse(requestWeather.responseText);
           weather = response.weather[0].main;
           temp = response.main.temp;
+          tempCels = Math.round(temp) - 273;
           weatherIDCode = response.weather[0].id;
           if (weatherIDCode <= 232) {
             setThunderstormIcon();
@@ -50,13 +53,24 @@ function getWeather() {
             setClearIcon();
           } else if (weatherIDCode > 800 && weatherIDCode < 900) {
             setCloudIcon();
-          }
-          else {
+          } else {
             setClearIcon();
           }
           dispWeather.innerHTML = weather;
-          dispTemp.innerHTML = Math.round(temp) + "&#176";
+          dispTemp.innerHTML = Math.round(tempCels) + "&#176";
 
+          changeWeather.onclick = function (e) {
+            if (dispTemp.className === "temp-c") {
+              changeWeather.innerHTML = "&deg;C";
+              dispTemp.innerHTML = Math.round(tempCels * (9 / 5) + 32) + "&#176F";
+              dispTemp.className = "temp-f";
+            } else {
+              changeWeather.innerHTML = "&deg;F";
+              dispTemp.innerHTML = tempCels + "&deg;C";
+              dispTemp.className = "temp-c";
+
+            }
+          }
 
         }
       }
