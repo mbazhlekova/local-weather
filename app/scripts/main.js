@@ -1,4 +1,4 @@
-function getWeather() {
+(function getWeather() {
   var latitude,
     longitude,
     city,
@@ -20,6 +20,7 @@ function getWeather() {
   request.open("GET", "http://ip-api.com/json", true);
   request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
+      //TO DO: Add error handling
       var location = JSON.parse(request.responseText);
       latitude = location.lat;
       longitude = location.lon;
@@ -35,6 +36,7 @@ function getWeather() {
         "&lon=" + longitude + "&appid=9b37eb46932ca27fa0c98ed1aec271b9", true);
       requestWeather.onload = function () {
         if (requestWeather.status >= 200 && requestWeather.status < 400) {
+          //TO DO: Add error handling
           var response = JSON.parse(requestWeather.responseText);
           weather = response.weather[0].main;
           temp = response.main.temp;
@@ -56,7 +58,7 @@ function getWeather() {
           dispWeather.innerHTML = weather;
           dispTemp.innerHTML = Math.round(tempCels) + "&#176";
 
-          //Convert between Fahernheir and Celsius on click of button
+          //Convert between Fahernheit and Celsius on click of button
           changeWeather.onclick = function (e) {
             if (dispTemp.className === "temp-c") {
               changeWeather.innerHTML = "&deg;C";
@@ -76,7 +78,7 @@ function getWeather() {
     }
   }
   request.send();
-}
+})();
 /*
 Following functions set the animated icon
 based on the weather code received from the OpenWeather API
@@ -152,4 +154,3 @@ function setThunderstormIcon() {
 
 }
 
-getWeather();
